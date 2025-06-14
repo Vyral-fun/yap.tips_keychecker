@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 export default function YapEligibilityChecker() {
   const [walletAddress, setWalletAddress] = useState('');
@@ -61,9 +62,11 @@ export default function YapEligibilityChecker() {
 
       {/* Logo */}
       <div className="absolute top-0 left-0 w-full flex justify-center pt-[5vh] z-20 pointer-events-none">
-        <img
+        <Image
           src="/apmarket.png"
           alt="ap.market"
+          width={112}
+          height={112}
           className="w-28"
         />
       </div>
@@ -99,21 +102,27 @@ export default function YapEligibilityChecker() {
       </div>
 
       {/* Character Image */}
-      <img
+      <Image
         src="/character.png"
         alt="character"
+        width={320}
+        height={320}
         className="fixed bottom-0 left-1/2 -translate-x-1/2 w-80 z-10 drop-shadow-2xl pointer-events-none"
       />
 
       {/* Side Labels */}
-      <img
+      <Image
         src="/Yapkey.png"
         alt="yap key left"
+        width={48}
+        height={48}
         className="absolute left-[6%] top-1/2 transform -translate-y-1/2 w-12 z-10"
       />
-      <img
+      <Image
         src="/Yapkey.png"
         alt="yap key right"
+        width={48}
+        height={48}
         className="absolute right-[6%] top-1/2 transform -translate-y-1/2 w-12 z-10"
       />
     </div>

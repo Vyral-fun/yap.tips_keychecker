@@ -1,14 +1,9 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
+import Image from 'next/image';
 
 export default function YapEligibilityChecker() {
-  const [walletAddress, setWalletAddress] = useState('');
-
-  const handleCheck = () => {
-    alert(`Checking eligibility for: ${walletAddress}`);
-  };
-
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center relative overflow-hidden">
       {/* Grid SVG Background */}
@@ -20,9 +15,11 @@ export default function YapEligibilityChecker() {
 
       {/* Logo */}
       <div className="absolute top-0 left-0 w-full flex justify-center pt-[5vh] z-20 pointer-events-none">
-        <img
+        <Image
           src="/apmarket.png"
           alt="ap.market"
+          width={112}
+          height={112}
           className="w-28"
         />
       </div>
@@ -30,7 +27,7 @@ export default function YapEligibilityChecker() {
       {/* Title and Subtitle */}
       <div className="text-center z-10">
         <h1 className="text-4xl tracking-wide mb-2 drop-shadow-lg" style={{ fontFamily: "'Jersey 15', cursive", fontSize: '48px', marginBottom: '17px' }}>Yap Key Eligibility Status</h1>
-        <p className="text-gray-300 text-lg tracking-wide" style={{ fontFamily: "'Jersey 15', cursive", fontSize: '36px', opacity: 0.6, marginBottom: '45px' }}>You've qualified for the list. Stay tuned for activation or next steps.</p>
+        <p className="text-gray-300 text-lg tracking-wide" style={{ fontFamily: "'Jersey 15', cursive", fontSize: '36px', opacity: 0.6, marginBottom: '45px' }}>You&apos;ve qualified for the list. Stay tuned for activation or next steps.</p>
       </div>
 
       {/* Not Eligible Area */}
@@ -57,23 +54,29 @@ export default function YapEligibilityChecker() {
       </div>
 
       {/* Character Image */}
-      <img
+      <Image
         src="/character.png"
         alt="character"
+        width={320}
+        height={320}
         className="fixed bottom-0 left-1/2 -translate-x-1/2 w-80 z-10 drop-shadow-2xl pointer-events-none"
       />
 
       {/* Side Labels */}
-      <img
+      <Image
         src="/YapKeyWhite.png"
         alt="yap key left"
+        width={48}
+        height={48}
         className="absolute left-[6%] top-1/2 transform -translate-y-1/2 w-12 z-10"
       />
-      <img
+      <Image
         src="/YapKeyWhite.png"
         alt="yap key right"
+        width={48}
+        height={48}
         className="absolute right-[6%] top-1/2 transform -translate-y-1/2 w-12 z-10"
-        />
+      />
     </div>
   );
 }
