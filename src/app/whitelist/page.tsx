@@ -8,7 +8,7 @@ export default function YapEligibilityChecker() {
   const router = useRouter();
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center relative overflow-hidden pb-40">
       {/* Grid SVG Background */}
       <div className="absolute inset-0 z-1 bg-[url('/Grid.svg')] bg-cover bg-center" />
       {/* Infinite Scrolling SVG Background */}

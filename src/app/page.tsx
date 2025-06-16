@@ -52,7 +52,7 @@ export default function YapEligibilityChecker() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen bg-black text-white flex flex-col relative overflow-hidden pb-40">
       {/* Grid SVG Background */}
       <div className="absolute inset-0 z-1 bg-[url('/Grid.svg')] bg-cover bg-center" />
       {/* Infinite Scrolling SVG Background */}
@@ -71,34 +71,37 @@ export default function YapEligibilityChecker() {
         />
       </div>
 
-      {/* Title and Subtitle */}
-      <div className="text-center z-10">
-        <h1 className="text-4xl tracking-wide mb-2 drop-shadow-lg" style={{ fontFamily: "var(--font-jersey-15)", fontSize: '48px', marginBottom: '17px' }}>Yap Key Eligibility Status</h1>
-        <p className="text-gray-300 text-lg tracking-wide" style={{ fontFamily: "var(--font-jersey-15)", fontSize: '36px', opacity: 0.6, marginBottom: '45px' }}>Paste your wallet address to check eligibility status</p>
-      </div>
+      {/* Centered Main Content */}
+      <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-[370px] flex flex-col items-center">
+        {/* Title and Subtitle */}
+        <div className="text-center z-10">
+          <h1 className="text-4xl tracking-wide mb-2 drop-shadow-lg" style={{ fontFamily: "var(--font-jersey-15)", fontSize: '48px', marginBottom: '17px' }}>Yap Key Eligibility Status</h1>
+          <p className="text-gray-300 text-lg tracking-wide" style={{ fontFamily: "var(--font-jersey-15)", fontSize: '36px', opacity: 0.6, marginBottom: '45px' }}>Paste your wallet address to check eligibility status</p>
+        </div>
 
-      {/* Input and Button */}
-      <div className="bg-[#1c1c1c]/80 p-6 rounded-2xl w-[370px] flex flex-col items-center gap-4 z-10 shadow-lg mb-2">
-        <input
-          type="text"
-          value={walletAddress}
-          onChange={(e) => setWalletAddress(e.target.value)}
-          placeholder="0x0000000000abcdef1...34078"
-          className="bg-black/80 text-gray-300 px-4 py-2 w-full rounded-full placeholder-gray-600" style={{ fontSize: '18px' }}
-        />
-        {error && (
-          <p className="text-red-500 text-sm">{error}</p>
-        )}
-        <button
-          onClick={handleCheck}
-          disabled={isLoading}
-          className={`bg-[#232323] hover:bg-[#333] text-white px-4 py-2 w-full rounded-full border border-gray-600 font-semibold shadow ${
-            isLoading ? 'opacity-50 cursor-not-allowed' : ''
-          }`}
-          style={{ fontSize: '18px' }}
-        >
-          {isLoading ? 'Checking...' : 'Check'}
-        </button>
+        {/* Input and Button */}
+        <div className="bg-[#1c1c1c]/80 p-6 rounded-2xl w-full flex flex-col items-center gap-4 z-10 shadow-lg mb-2">
+          <input
+            type="text"
+            value={walletAddress}
+            onChange={(e) => setWalletAddress(e.target.value)}
+            placeholder="0x0000000000abcdef1...34078"
+            className="bg-black/80 text-gray-300 px-4 py-2 w-full rounded-full placeholder-gray-600" style={{ fontSize: '18px' }}
+          />
+          {error && (
+            <p className="text-red-500 text-sm">{error}</p>
+          )}
+          <button
+            onClick={handleCheck}
+            disabled={isLoading}
+            className={`bg-[#232323] hover:bg-[#333] text-white px-4 py-2 w-full rounded-full border border-gray-600 font-semibold shadow ${
+              isLoading ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
+            style={{ fontSize: '18px' }}
+          >
+            {isLoading ? 'Checking...' : 'Check'}
+          </button>
+        </div>
       </div>
 
       {/* Character Image */}
