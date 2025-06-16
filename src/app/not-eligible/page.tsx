@@ -80,14 +80,14 @@ export default function YapEligibilityChecker() {
         alt="yap key left"
         width={48}
         height={48}
-        className="absolute left-[6%] top-1/2 transform -translate-y-1/2 w-12 z-10"
+        className="hidden md:absolute left-[6%] top-1/2 transform -translate-y-1/2 w-12 z-10"
       />
       <Image
         src="/YapKeyRed.png"
         alt="yap key right"
         width={48}
         height={48}
-        className="absolute right-[6%] top-1/2 transform -translate-y-1/2 w-12 z-10"
+        className="hidden md:absolute right-[6%] top-1/2 transform -translate-y-1/2 w-12 z-10"
       />
     </div>
   );

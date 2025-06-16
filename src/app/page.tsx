@@ -56,7 +56,7 @@ export default function YapEligibilityChecker() {
       {/* Grid SVG Background */}
       <div className="absolute inset-0 z-1 bg-[url('/Grid.svg')] bg-cover bg-center" />
       {/* Infinite Scrolling SVG Background */}
-      <div className="absolute inset-0 z-0 bg-scroll-vertical" />
+      <div className="absolute inset-0 z-0 bg-[url('/Scroll.svg')] bg-scroll-vertical" />
       {/* Background grid lines */}
       {/* <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:64px_64px] z-0" /> */}
 
@@ -116,14 +116,14 @@ export default function YapEligibilityChecker() {
         alt="yap key left"
         width={48}
         height={48}
-        className="absolute left-[6%] top-1/2 transform -translate-y-1/2 w-12 z-10"
+        className="hidden md:absolute left-[6%] top-1/2 transform -translate-y-1/2 w-12 z-10"
       />
       <Image
         src="/Yapkey.png"
         alt="yap key right"
         width={48}
         height={48}
-        className="absolute right-[6%] top-1/2 transform -translate-y-1/2 w-12 z-10"
+        className="hidden md:absolute right-[6%] top-1/2 transform -translate-y-1/2 w-12 z-10"
       />
     </div>
   );
