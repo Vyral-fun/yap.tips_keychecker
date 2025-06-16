@@ -2,8 +2,11 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 export default function YapEligibilityChecker() {
+  const router = useRouter();
+
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center relative overflow-hidden">
       {/* Grid SVG Background */}
@@ -26,8 +29,8 @@ export default function YapEligibilityChecker() {
 
       {/* Title and Subtitle */}
       <div className="text-center z-10">
-        <h1 className="text-4xl tracking-wide mb-2 drop-shadow-lg" style={{ fontFamily: "'Jersey 15', cursive", fontSize: '48px', marginBottom: '17px' }}>Yap Key Eligibility Status</h1>
-        <p className="text-gray-300 text-lg tracking-wide" style={{ fontFamily: "'Jersey 15', cursive", fontSize: '36px', opacity: 0.6, marginBottom: '45px' }}>You&apos;ve qualified for the list. Stay tuned for activation or next steps.</p>
+        <h1 className="text-4xl tracking-wide mb-2 drop-shadow-lg" style={{ fontFamily: "var(--font-jersey-15)", fontSize: '48px', marginBottom: '17px' }}>Yap Key Eligibility Status</h1>
+        <p className="text-gray-300 text-lg tracking-wide" style={{ fontFamily: "var(--font-jersey-15)", fontSize: '36px', opacity: 0.6, marginBottom: '45px' }}>You&apos;ve qualified for the list. Stay tuned for activation or next steps.</p>
       </div>
 
       {/* Not Eligible Area */}
@@ -41,7 +44,7 @@ export default function YapEligibilityChecker() {
       >
         <span
           style={{
-            fontFamily: "'Jersey 20', cursive",
+            fontFamily: "var(--font-jersey-20)",
             fontSize: '36px',
             color: 'Black',
             width: '100%',
@@ -52,6 +55,15 @@ export default function YapEligibilityChecker() {
           White List
         </span>
       </div>
+
+      {/* Check Another Button */}
+      <button
+        onClick={() => router.push('/')}
+        className="mt-8 bg-[#232323] hover:bg-[#333] text-white px-8 py-3 rounded-full border border-gray-600 font-semibold shadow text-lg z-20"
+        style={{ fontFamily: "var(--font-jersey-15)" }}
+      >
+        Check Another
+      </button>
 
       {/* Character Image */}
       <Image
