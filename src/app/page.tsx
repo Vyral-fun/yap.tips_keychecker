@@ -116,14 +116,14 @@ export default function YapEligibilityChecker() {
         alt="yap key left"
         width={48}
         height={48}
-        className="hidden md:absolute left-[6%] top-1/2 transform -translate-y-1/2 w-12 z-10"
+        className="hidden md:block md:absolute left-[6%] top-1/2 transform -translate-y-1/2 w-12 z-20"
       />
       <Image
         src="/Yapkey.png"
         alt="yap key right"
         width={48}
         height={48}
-        className="hidden md:absolute right-[6%] top-1/2 transform -translate-y-1/2 w-12 z-10"
+        className="hidden md:block md:absolute right-[6%] top-1/2 transform -translate-y-1/2 w-12 z-20"
       />
     </div>
   );
