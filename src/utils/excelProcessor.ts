@@ -1,63 +1,46 @@
-import * as XLSX from 'xlsx';
+// @ts-ignore
+import { parse as csvParse } from 'csv-parse/sync';
 import { promises as fs } from 'fs';
 import path from 'path';
 
-interface EligibilityData {
-  key: string;
-  isEligible: boolean;
-  redirectPage?: string;
-}
-
-interface ExcelRow {
-  key: string;
-  isEligible: boolean;
+interface EligibilityResult {
+  status: 'whitelist' | 'eligible' | 'not_eligible';
   redirectPage: string;
 }
 
-export async function checkEligibility(key: string): Promise<EligibilityData> {
+export async function checkEligibility(walletAddress: string): Promise<EligibilityResult> {
   try {
-    // Read the Excel file from the public directory
-    const filePath = path.join(process.cwd(), 'public', 'eligibility.xlsx');
-    const fileBuffer = await fs.readFile(filePath);
-    const workbook = XLSX.read(fileBuffer);
-    
-    // Get the first worksheet
-    const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-    
-    // Convert the worksheet to JSON with header row
-    const data = XLSX.utils.sheet_to_json<ExcelRow>(worksheet, {
-      raw: false,
-      defval: null
-    });
+    // Helper to read and parse CSV
+    const readCSV = async (filename: string) => {
+      const filePath = path.join(process.cwd(), 'public', filename);
+      const fileContent = await fs.readFile(filePath, 'utf8');
+      return csvParse(fileContent, {
+        columns: true,
+        skip_empty_lines: true,
+        trim: true,
+      });
+    };
 
-    console.log('Excel data:', data); // Debug log
-    console.log('Searching for key:', key); // Debug log
+    // Normalize address for case-insensitive match
+    const normalize = (addr: string) => addr.trim().toLowerCase();
+    const inputAddress = normalize(walletAddress);
 
-    // Find the matching key in the data
-    const match = data.find((row) => row.key === key);
-    console.log('Found match:', match); // Debug log
-
-    if (match) {
-      // Return the exact data from the Excel file
-      const result = {
-        key: match.key,
-        isEligible: match.isEligible,
-        redirectPage: match.redirectPage
-      };
-      console.log('Returning result:', result); // Debug log
-      return result;
+    // Check whitelist
+    const whitelistRows = await readCSV('whitelist.csv');
+    if (whitelistRows.some((row: any) => normalize(row.wallet_address) === inputAddress)) {
+      return { status: 'whitelist', redirectPage: 'whitelist' };
     }
 
-    // If no match found, return not eligible
-    const defaultResult = {
-      key,
-      isEligible: false,
-      redirectPage: 'not-eligible'
-    };
-    console.log('Returning default result:', defaultResult); // Debug log
-    return defaultResult;
+    // Check eligible
+    const eligibleRows = await readCSV('eligible.csv');
+    if (eligibleRows.some((row: any) => normalize(row.wallet_address) === inputAddress)) {
+      return { status: 'eligible', redirectPage: 'eligible' };
+    }
+
+    // Not found
+    return { status: 'not_eligible', redirectPage: 'not-eligible' };
   } catch (error) {
-    console.error('Error processing Excel file:', error);
+    console.error('Error processing CSV files:', error);
     throw new Error('Failed to process eligibility check');
   }
 } 

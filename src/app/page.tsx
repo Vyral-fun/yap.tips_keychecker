@@ -76,7 +76,12 @@ export default function YapEligibilityChecker() {
         {/* Title and Subtitle */}
         <div className="text-center z-10">
           <h1 className="text-4xl tracking-wide mb-2 drop-shadow-lg" style={{ fontFamily: "var(--font-jersey-15)", fontSize: '48px', marginBottom: '17px' }}>Yap Key Eligibility Status</h1>
-          <p className="text-gray-300 text-lg tracking-wide" style={{ fontFamily: "var(--font-jersey-15)", fontSize: '36px', opacity: 0.6, marginBottom: '45px' }}>Paste your wallet address to check eligibility status</p>
+          <p
+            className="text-gray-300 tracking-wide text-[20px] md:text-[36px] lg:text-[40px] opacity-60 mb-[45px] text-center w-full whitespace-normal md:whitespace-nowrap"
+            style={{ fontFamily: "var(--font-jersey-15)" }}
+          >
+            Paste your wallet address to check eligibility status
+          </p>
         </div>
 
         {/* Input and Button */}
