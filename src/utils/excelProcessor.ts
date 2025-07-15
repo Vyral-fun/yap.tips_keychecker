@@ -1,4 +1,3 @@
-// @ts-ignore
 import { parse as csvParse } from 'csv-parse/sync';
 import { promises as fs } from 'fs';
 import path from 'path';
@@ -6,6 +5,11 @@ import path from 'path';
 interface EligibilityResult {
   status: 'whitelist' | 'eligible' | 'not_eligible';
   redirectPage: string;
+}
+
+// Define a type for CSV rows
+interface WalletRow {
+  wallet_address: string;
 }
 
 export async function checkEligibility(walletAddress: string): Promise<EligibilityResult> {
@@ -18,7 +22,7 @@ export async function checkEligibility(walletAddress: string): Promise<Eligibili
         columns: true,
         skip_empty_lines: true,
         trim: true,
-      });
+      }) as WalletRow[];
     };
 
     // Normalize address for case-insensitive match
@@ -27,13 +31,13 @@ export async function checkEligibility(walletAddress: string): Promise<Eligibili
 
     // Check whitelist
     const whitelistRows = await readCSV('whitelist.csv');
-    if (whitelistRows.some((row: any) => normalize(row.wallet_address) === inputAddress)) {
+    if (whitelistRows.some((row: WalletRow) => normalize(row.wallet_address) === inputAddress)) {
       return { status: 'whitelist', redirectPage: 'whitelist' };
     }
 
     // Check eligible
     const eligibleRows = await readCSV('eligible.csv');
-    if (eligibleRows.some((row: any) => normalize(row.wallet_address) === inputAddress)) {
+    if (eligibleRows.some((row: WalletRow) => normalize(row.wallet_address) === inputAddress)) {
       return { status: 'eligible', redirectPage: 'eligible' };
     }
 
