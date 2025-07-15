@@ -77,7 +77,7 @@ export default function YapEligibilityChecker() {
         <div className="text-center z-10">
           <h1 className="text-4xl tracking-wide mb-2 drop-shadow-lg" style={{ fontFamily: "var(--font-jersey-15)", fontSize: '48px', marginBottom: '17px' }}>Yap Key Eligibility Status</h1>
           <p
-            className="text-gray-300 tracking-wide text-[20px] md:text-[36px] lg:text-[40px] opacity-60 mb-[45px] text-center w-full whitespace-normal md:whitespace-nowrap"
+            className="text-gray-300 tracking-wide text-[18px] md:text-[36px] lg:text-[40px] opacity-60 mb-[30px] md:mb-[45px] text-center w-full whitespace-normal md:whitespace-nowrap font-semibold"
             style={{ fontFamily: "var(--font-jersey-15)" }}
           >
             Paste your wallet address to check eligibility status
