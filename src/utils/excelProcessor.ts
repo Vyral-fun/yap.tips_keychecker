@@ -29,16 +29,16 @@ export async function checkEligibility(walletAddress: string): Promise<Eligibili
     const normalize = (addr: string) => addr.trim().toLowerCase();
     const inputAddress = normalize(walletAddress);
 
+    // Check eligible first
+    const eligibleRows = await readCSV('eligible.csv');
+    if (eligibleRows.some((row: WalletRow) => normalize(row.wallet_address) === inputAddress)) {
+      return { status: 'eligible', redirectPage: 'eligible' };
+    }
+
     // Check whitelist
     const whitelistRows = await readCSV('whitelist.csv');
     if (whitelistRows.some((row: WalletRow) => normalize(row.wallet_address) === inputAddress)) {
       return { status: 'whitelist', redirectPage: 'whitelist' };
-    }
-
-    // Check eligible
-    const eligibleRows = await readCSV('eligible.csv');
-    if (eligibleRows.some((row: WalletRow) => normalize(row.wallet_address) === inputAddress)) {
-      return { status: 'eligible', redirectPage: 'eligible' };
     }
 
     // Not found
