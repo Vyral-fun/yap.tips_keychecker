@@ -1,14 +1,37 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 export default function YapEligibilityChecker() {
   const router = useRouter();
+  const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    setShowPopup(true);
+  }, []);
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center relative overflow-hidden pb-40">
+      {/* Popup Modal */}
+      {showPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
+          <div className="bg-[#18181b] text-gray-300 rounded-2xl shadow-xl p-6 md:p-10 max-w-lg md:max-w-2xl w-full relative">
+            <button
+              className="absolute top-4 right-4 text-2xl text-gray-500 hover:text-teal-400 transition-colors"
+              onClick={() => setShowPopup(false)}
+              aria-label="Close"
+            >
+              &times;
+            </button>
+            <div className="text-left">
+              <div className="text-3xl font-bold mb-4 text-teal-400">Not Eligible</div>
+              <div className="font-bold text-lg mb-6 text-white">You didn't quite make it but there might a chance for you to mint in Public Phase if Yap Keys are not sold out by WhiteList Phase.</div>
+            </div>
+          </div>
+        </div>
+      )}
       {/* Grid SVG Background */}
       <div className="absolute inset-0 z-1 bg-[url('/Grid.svg')] bg-cover bg-center" />
       {/* Infinite Scrolling SVG Background */}
