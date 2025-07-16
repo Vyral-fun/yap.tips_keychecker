@@ -1,14 +1,51 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 export default function YapEligibilityChecker() {
   const router = useRouter();
+  const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    setShowPopup(true);
+  }, []);
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center relative overflow-hidden pb-40">
+      {/* Popup Modal */}
+      {showPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
+          <div className="bg-[#18181b] text-gray-300 rounded-2xl shadow-xl p-6 md:p-10 max-w-lg md:max-w-2xl w-full relative">
+            <button
+              className="absolute top-4 right-4 text-2xl text-gray-500 hover:text-teal-400 transition-colors"
+              onClick={() => setShowPopup(false)}
+              aria-label="Close"
+            >
+              &times;
+            </button>
+            <div className="text-left">
+              <div className="text-3xl font-bold mb-4 text-teal-400">🎉 Congratulations! 🎉</div>
+              <div className="font-bold text-lg mb-6 text-white">You’ve officially secured a spot on the Allowlist for the exclusive drop of 369 Yap Keys - your front-row pass to the Yap Market. <span className='text-teal-400'>🔑</span></div>
+              <div className="mb-6 text-base text-gray-400">
+                <div className="mb-3">Here’s the deal:</div>
+                <div className="mb-3 font-semibold text-white flex items-center gap-2">🟢 <span>Allowlist = Guaranteed Mint during the allowlist phase.</span></div>
+                <div className="mb-2 flex items-center gap-2"><span>🗓️</span> <span className="font-bold text-white">Mint Date:</span> <span>July 19</span></div>
+                <div className="mb-2 flex items-center gap-2"><span>🔑</span> <span className="font-bold text-white">Collection size:</span> <span>369</span></div>
+                <div className="mb-2 flex items-center gap-2"><span>💰</span> <span className="font-bold text-white">Price:</span> <span>369 USDC</span></div>
+                <div className="mb-2 flex items-center gap-2"><span>🔗</span> <span className="font-bold text-white">Chain:</span> <span>Base</span></div>
+              </div>
+              <button
+                className="mt-6 w-full bg-teal-400 text-white font-bold py-3 rounded-lg opacity-60 cursor-not-allowed text-lg"
+                disabled
+              >
+                Coming Soon
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       {/* Grid SVG Background */}
       <div className="absolute inset-0 z-1 bg-[url('/Grid.svg')] bg-cover bg-center" />
       {/* Infinite Scrolling SVG Background */}

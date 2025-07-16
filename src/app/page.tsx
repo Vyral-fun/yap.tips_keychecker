@@ -38,8 +38,8 @@ export default function YapEligibilityChecker() {
       // Redirect to the page specified in the response
       if (data.redirectPage) {
         console.log('Redirecting to:', data.redirectPage); // Debug log
-        if (data.redirectPage === 'whitelist') {
-          router.push('/whitelist?from=eligibility');
+        if (data.redirectPage === 'whitelist' || data.redirectPage === 'eligible') {
+          router.push(`/${data.redirectPage}?from=eligibility`);
         } else {
           router.push(`/${data.redirectPage}`);
         }
