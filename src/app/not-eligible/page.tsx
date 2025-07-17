@@ -27,7 +27,7 @@ export default function YapEligibilityChecker() {
             </button>
             <div className="text-left">
               <div className="text-3xl font-bold mb-4 text-teal-400">Not Eligible</div>
-              <div className="font-bold text-lg mb-6 text-white">You didn't quite make it but there might a chance for you to mint in Public Phase if Yap Keys are not sold out by WhiteList Phase.</div>
+              <div className="font-bold text-lg mb-6 text-white">You didn&apos;t quite make it but there might a chance for you to mint in Public Phase if Yap Keys are not sold out by WhiteList Phase.</div>
             </div>
           </div>
         </div>

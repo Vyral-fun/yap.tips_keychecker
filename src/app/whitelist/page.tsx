@@ -36,7 +36,7 @@ export default function YapEligibilityChecker() {
               <div className="mb-6 text-base text-gray-400">
                 <div className="mb-3">But here’s the deal:</div>
                 <div className="mb-3 font-semibold text-white flex items-center gap-2">⏳ <span>First come, first served.</span></div>
-                <div className="mb-3">There’s a big whitelist, and once the seats are gone - they’re gone.<br/>Don't say we didn’t warn you.</div>
+                <div className="mb-3">There&apos;s a big whitelist, and once the seats are gone - they&apos;re gone.<br/>Don&apos;t say we didn&apos;t warn you.</div>
                 <div className="mb-2 flex items-center gap-2"><span>🗓️</span> <span className="font-bold text-white">Mint Date:</span> <span>July 19</span></div>
                 <div className="mb-2 flex items-center gap-2"><span>💰</span> <span className="font-bold text-white">Price:</span> <span>369 USDC</span></div>
                 <div className="mb-2 flex items-center gap-2"><span>🔑</span> <span className="font-bold text-white">Collection size:</span> <span>369</span></div>
